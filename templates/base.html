@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+  {% load bootstrap4 %}
+  {% bootstrap_css %}
+  <meta charset="utf-8">
+  <title>{% block title %}{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+  {% block head %} {% endblock %}
+</head>
+<body>
+
+<div style="width:100%; height:1000px; background-color: rgb(123, 193, 255); background-size: cover; background-position: center; clip-path: ellipse(120% 60% at 0% 0%); font-family: 'Comic Sans MS', cursive, sans-serif;">
+  {% if user.is_authenticated %}
+  <header>
+    <div>
+      <nav>
+          <div class="d-flex justify-content-center">
+            <div class="d-flex">
+              <div class="p-5" style="margin-left:20px; margin-right:20px;"><a href="/" style="color:black">Home</a></div>
+              <div class="p-5" style="margin-left:20px; margin-right:20px;"><a href="/trains/trains" style="color:black">Search</a></div>
+              <div class="p-5" style="margin-left:20px; margin-right:20px;"><a href="/your_routes" style="color:black">My tickets</a></div>
+              {% if request.user.is_staff %}
+              <div class="p-5" style="margin-left:20px; margin-right:20px;"><a href="/staff_only" style="color:black">Staff only!</a></div>
+              {% endif %}
+            </div>
+            <div class="d-flex" style="position:absolute; right:0; margin-top: 10px;">
+              <div class="justify-content-end p-3"><p>Hi {{ user.username }}!, <a href="{% url 'logout' %}">Log Out</a></p></div>
+            </div>
+          </div>
+      </nav>
+    </div>
+  </header>
+  {% endif %}
+</div>
+  {% load bootstrap4 %}
+  {% bootstrap_javascript jquery='full' %}
+  {% block body %}
+  {% endblock %}
+
+</body>
+</html>

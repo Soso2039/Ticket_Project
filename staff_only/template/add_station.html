@@ -1,0 +1,42 @@
+{% extends 'basestaff.html' %}
+{% block body %}
+<div class="d-grid justify-content-center" style="position:relative; bottom: 870px; font-size:30px; font-family: 'Comic Sans MS', cursive, sans-serif;">
+{% if message %}
+    <div class="d-flex justify-content-center" style="color:aliceblue">{{message}}!</div>
+{% endif %}
+    <div class="d-flex justify-content-center">Add stations!</div>
+</div>
+
+<form action="addrecord_station" method="post">
+    {% csrf_token %}
+    <div class="d-grid justify-content-center border border-primary p-2 bg-light bg-gradient" style="margin-left:40%; margin-right:40%; height: 300px;  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset; position:relative; bottom: 830px; background-color: aliceblue; font-family: 'Comic Sans MS', cursive, sans-serif;">
+        <div class="d-flex justify-content-center">
+            City:
+        </div>
+        <div class="d-flex justify-content-center">
+            <input name="city">
+        </div>
+        <div class="d-flex justify-content-center">
+            Station:
+        </div>
+        <div class="d-flex justify-content-center">
+            <input name="station">
+        </div>
+        <div class="d-flex justify-content-center">
+            Longitude:
+        </div>
+        <div class="d-flex justify-content-center">
+            <input name="longitude" type=”number”>
+        </div>
+        <div class="d-flex justify-content-center">
+            Latitude:
+        </div>
+        <div class="d-flex justify-content-center">
+            <input name="latitude" type=”number”> 
+        </div>
+        <div class="d-flex justify-content-center p-2">
+            <input type="submit" class="btn btn-success mb-2 btn-outline-dark" value="Submit">
+        </div>
+    </div>  
+</form>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "base.html "%}
+{% block title %}
+Login
+{% endblock %}
+
+{% block body %}
+    <div class="d-flex justify-content-center p-2" style="font-family: 'Comic Sans MS', cursive, sans-serif; color:rgb(0, 0, 0); font-weight: bold; text-align: center; font-size: xx-large; position:relative; bottom: 800px; ">
+        Log in!
+    </div>
+    <div class="container">
+        <div style="font-family: 'Comic Sans MS', cursive, sans-serif; display: grid; place-items: center; margin-top: 5%; margin-left: 40%; margin-right: 40%;  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset; position:relative; bottom: 800px; background-color: aliceblue;" class="border border-success p-3">
+            {% if message %}
+                <div style="text-align: center; color:red; font-weight: bold">{{message}}</div>
+            {% endif %}
+            <form action="{% url 'login' %}" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="exampleInputEmail1" class="form-label">Username</label>
+                    <input type="text" name="username" placeholder="username" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                    <input type="password" name="password" placeholder="password" class="form-control" id="exampleInputPassword1">
+                </div>
+                <div class="d-flex">
+                    <div class="d-flex justify-content-center">
+                        <input class="btn btn-primary" type="submit" value="Login">
+                    </div>
+                    <div style="margin-left: 10px;">
+                        <a href="{% url 'login' %}?staff_login=true" class="btn btn-primary">Log in as staff</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

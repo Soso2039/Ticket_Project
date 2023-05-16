@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block body %}
+  <div class="d-flex justify-content-center p-2" style=" font-size: 40px; position:relative; bottom: 900px; place-items: center; margin-left: auto ;margin-right: auto ; width: 700px; font-family: 'Comic Sans MS', cursive, sans-serif; min-width: 150px;">
+    Sign up!
+  </div>
+  <form method="post">
+    {% csrf_token %}
+    <div class="d-grid justify-content-center p-2" style=" place-items: center; margin-left: auto ;margin-right: auto ; width: 700px; box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset; position:relative; bottom: 800px; background-color: aliceblue; font-family: 'Comic Sans MS', cursive, sans-serif; min-width: 150px;" class="border p-3">
+      <div class="p-3">
+        {{ form.as_p }}
+      </div>
+      <div class="d-grid justify-content-center p-2">
+        <div class="d-flex justify-content-center">
+          <button class="btn btn-info mb-2" type="submit">Sign Up</button>
+        </div>
+      </div>
+    </div>
+  </form>
+{% endblock %}
